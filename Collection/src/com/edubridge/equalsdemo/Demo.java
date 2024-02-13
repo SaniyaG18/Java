@@ -37,8 +37,5 @@ public class Demo {
 			return false;
 		Demo other = (Demo) obj;
 		return Objects.equals(id, other.id) && Objects.equals(name, other.name);
-	}
-	
-	
-	
+	}	
 }
