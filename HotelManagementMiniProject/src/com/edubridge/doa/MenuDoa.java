@@ -13,6 +13,7 @@ public class MenuDoa {
 	public static boolean insertValues(Menu m) {
 		
 		Connection connect= ConnectionClassDemo.createConnect();
+		@SuppressWarnings("unused")
 		boolean f = false;
 		try {
 		String query = "insert into menu(name,price,quantity) values(?,?,?)";
@@ -32,6 +33,7 @@ public class MenuDoa {
 	
 	public static boolean deleteValues(int id) {
 		Connection connect= ConnectionClassDemo.createConnect();
+		@SuppressWarnings("unused")
 		boolean f = false;
 		try {
 			String query = "delete from menu where id = ?";
@@ -46,6 +48,7 @@ public class MenuDoa {
 	}
 	public static boolean display() {
 		Connection connect= ConnectionClassDemo.createConnect();
+		@SuppressWarnings("unused")
 		boolean f = false;
 		try {
 			String query = "select * from menu";
