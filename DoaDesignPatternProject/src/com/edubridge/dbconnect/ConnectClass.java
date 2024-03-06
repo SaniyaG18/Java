@@ -3,9 +3,9 @@ package com.edubridge.dbconnect;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class Connect {
+public class ConnectClass {
 	
-	static Connection connect;
+	static Connection con;
 	
 	
 	@SuppressWarnings("unused")
@@ -14,13 +14,13 @@ public class Connect {
 		try {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/miniprohject2","root","root");
-						
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/miniproject2","root","root");
+				return con;		
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		return connect;
+		return con;
 	
 		
 	}

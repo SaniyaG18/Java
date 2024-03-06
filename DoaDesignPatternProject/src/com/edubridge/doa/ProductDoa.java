@@ -5,7 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.edubridge.dbconnect.Connect;
+import com.edubridge.dbconnect.ConnectClass;
+
 import com.edubridge.pojo.Product;
 
 
@@ -14,10 +15,10 @@ public class ProductDoa {
 		try {
 			@SuppressWarnings("unused")
 			boolean f= false;
-			Connection connect = Connect.CreateConnect();
+			Connection con = ConnectClass.CreateConnect();
 			
 			String query= "insert into product(pname,price,quantity) values(?,?,?)";
-			PreparedStatement ps = connect.prepareStatement(query);
+			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, p.getpName());
 			ps.setInt(2, p.getPrice());
 			ps.setInt(3, p.getQuantity());
@@ -32,14 +33,14 @@ public class ProductDoa {
 		return false;
 	}
 	public static boolean updateData(int val,int id,Product p) {
-		Connection connect = Connect.CreateConnect();
+		Connection con = ConnectClass.CreateConnect();
 		try {
 			@SuppressWarnings("unused")
 			boolean f= false;
 		if(val==1) {
 			//Update Name
 			String query= "update product set pname=? where pid=?";
-			PreparedStatement ps = connect.prepareStatement(query);
+			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, p.getpName());
 			ps.setInt(2, id);
 			
@@ -49,7 +50,7 @@ public class ProductDoa {
 		else if(val==2) {
 			//Update Price
 			String query= "update product set price=? where pid=?";
-			PreparedStatement ps = connect.prepareStatement(query);
+			PreparedStatement ps = con.prepareStatement(query);
 			ps.setInt(1, p.getPrice());
 			ps.setInt(2, id);
 			ps.executeUpdate();
@@ -59,7 +60,7 @@ public class ProductDoa {
 		else if(val==3) {
 			//Update Quantity
 			String query= "update product set quantity=? where pid=?";
-			PreparedStatement ps = connect.prepareStatement(query);
+			PreparedStatement ps = con.prepareStatement(query);
 			ps.setInt(1, p.getQuantity());
 			ps.setInt(2, id);
 			ps.executeUpdate();
@@ -78,12 +79,12 @@ public class ProductDoa {
 		}
 	
 	public static boolean deleteData(int id) {
-		Connection connect = Connect.CreateConnect();
+		Connection con = ConnectClass.CreateConnect();
 		@SuppressWarnings("unused")
 		boolean f=false;
 		try {
 			String query= "delete from product where pid=?";
-			PreparedStatement ps = connect.prepareStatement(query);
+			PreparedStatement ps = con.prepareStatement(query);
 			ps.setInt(1, id);
 			
 			ps.executeUpdate();
@@ -98,10 +99,10 @@ public class ProductDoa {
 		
 	}
 	public static void displayData() {
-		Connection connect = Connect.CreateConnect();
+		Connection con = ConnectClass.CreateConnect();
 		try {
 			String query= "select * from product";
-			Statement stmt = connect.createStatement();
+			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			
 			while(rs.next()) {
